@@ -1,17 +1,16 @@
+import java.util.*;
+
 class Solution {
     public int solution(int[] numbers) {
-        int answer=-100000000;
+        int len = numbers.length;
         
-        for(int i=0;i<numbers.length;i++){
-            for(int j=0;j<numbers.length;j++){
-               if(i!=j){
-                    if(answer < numbers[i]*numbers[j]){
-                    answer = numbers[i]*numbers[j];
-                    }
-                }
-            }
-        }
-             
+        Arrays.sort(numbers);
+        
+        int num1 = numbers[0]*numbers[1];
+        int num2 = numbers[len-2]*numbers[len-1];
+        
+        int answer = Math.max(num1,num2);
+          
         return answer;
     }
 }
