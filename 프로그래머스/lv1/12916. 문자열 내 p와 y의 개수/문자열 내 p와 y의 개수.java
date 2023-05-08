@@ -13,11 +13,7 @@ class Solution {
             }
         }
         
-        if(p==y){
-            answer = true;
-        }else{
-            answer = false;
-        }
+        answer = p==y? true:false;
 
         return answer;
     }
