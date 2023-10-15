@@ -1,26 +1,30 @@
+
+
+
 import java.util.*;
 class Solution {
     public int[] solution(int[] numbers) {
        List<Integer> arr = new ArrayList<Integer>();
+        Set<Integer> set = new HashSet<Integer>(arr);
         
         for(int i=0;i<numbers.length;i++){
             for(int j=i+1;j<numbers.length;j++){
-                int result = numbers[i] + numbers[j];
-                arr.add(result);
+                set.add(numbers[i] + numbers[j]);
             }
         }
         
-        Set<Integer> set = new HashSet<Integer>(arr);
-        List<Integer> newArr = new ArrayList<Integer>(set);
+        int[] answer = new int[set.size()];
         
-        Collections.sort(newArr);
-        
-        int[] answer = new int[newArr.size()];
-        
-        for(int i=0;i<newArr.size();i++){
-            answer[i] = newArr.get(i).intValue();
+        Iterator iter = set.iterator();	
+        while(iter.hasNext()) {
+            arr.add((Integer)iter.next());
         }
         
+        Collections.sort(arr);
+        
+        for(int i=0;i<arr.size();i++){
+            answer[i] = arr.get(i).intValue();
+        }
         return answer;
     }
 }
