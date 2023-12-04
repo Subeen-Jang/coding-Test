@@ -4,40 +4,25 @@ class Solution {
         String[] str = polynomial.split(" \\+ ");
         int count = 0;
         int num = 0;
-        int tmp = 0;
-        
-        for(int i=0;i<str.length;i++){
-            if(str[i].equals("x")){
+
+        for (String tmp : str) {
+            if (tmp.equals("x")) {
                 count++;
-            }else if(str[i].contains("x")){
-                for(int j=0;j<str[i].length();j++){
-                    if(str[i].charAt(j) == 'x'){
-                        tmp = j;
-                        break;
-                    }
-                }
-                count += Integer.parseInt(str[i].substring(0,tmp));
-            }else if(str[i].matches(".*\\d.*")){
-                num += Integer.parseInt(str[i]);
+            } else if (tmp.contains("x")) {
+             count += tmp.contains("x") ? Integer.parseInt(tmp.substring(0, tmp.indexOf("x"))) : 1;
+            } else if (tmp.matches(".*\\d.*")) {
+                num += Integer.parseInt(tmp);
             }
         }
-        
-        if(num > 0 && count>0){
-            answer = count + "x + " + num;
-            if(count == 1){
-                answer = "x + " + num;
-            }
-        }else if(num == 0){
-            answer = count + "x";
-            if(count == 1){
-                answer = "x";
-            }
-        }else if(count == 0){
-            answer = String.valueOf(num);
+
+        if (count > 0) {
+            answer += (count == 1) ? "x" : count + "x";
+        }
+
+        if (num > 0) {
+            answer += (count > 0) ? " + " + num : String.valueOf(num);
         }
 
         return answer;
     }
-   
-        
 }
