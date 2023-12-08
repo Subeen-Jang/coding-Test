@@ -19,7 +19,6 @@ class Solution {
                     answer[0] = Math.max(answer[0] - 1, -maxX);
             }
         }
-
         return answer;
     }
 }
