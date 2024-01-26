@@ -5,7 +5,7 @@ class Solution {
 
         Arrays.sort(arr);
         
-        for(int i=1;i<arr.length;i++){
+        for(int i=0;i<arr.length;i++){
             int gcd = GCD(answer, arr[i]);
             answer *= arr[i] / gcd;
         }
